@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?=base_url('assets/');?>css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>vendor/toast/jquery.toast.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -75,16 +76,14 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?=base_url('assets/');?>js/sb-admin-2.min.js"></script>
+    <script src="<?=base_url();?>vendor/sweetalert/sweetalert2@8.js"></script>
+    <script src="<?=base_url();?>vendor/blockui/jquery.blockUI.js"></script>
+    <script src="<?=base_url();?>vendor/toast/jquery.toast.min.js"></script>
+    <script src="<?=base_url();?>vendor/validate/jquery.validate.min.js"></script>
+    <script src="<?=base_url();?>vendor/validate/additional-methods.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="<?=base_url('assets/');?>vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="<?=base_url('assets/');?>js/demo/chart-area-demo.js"></script>
-    <script src="<?=base_url('assets/');?>js/demo/chart-pie-demo.js"></script>
-
-    <script src="<?=base_url('assets/js/backend/'.$js);?>"></script>
 
 </body>
 
 </html>
+<?php $this->load->view('backend/'.$js); ?>
