@@ -12,7 +12,11 @@
         $.ajax({
           url         : '<?=site_url('backend/berita/store');?>',
           method      : 'POST',
-          data        : $('#form').serialize(),
+          data        : new FormData(form),
+          processData        : false,
+          contentType        : false,
+          cache        : false,
+          async        : false,
           beforeSend  : function(){
             $.blockUI({ message: '<i class="fas fa-spinner fa-spin"></i> Silahkan Tunggu...' });
           },

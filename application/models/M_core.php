@@ -3,11 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_core extends CI_Model {
 
-  public function get($table, $limit = null, $offset = null, $where = null)
+  public $nama_gambar = '';
+
+  public function get($table, $limit = null, $offset = null, $where = null, $order = null, $order_ori = 'ASC')
   {
+    // TEMPLATE get($table, $limit, $offset, $where, $order, $order_ori)
     if($where != null)
     {
       $this->db->where($where);
+    }
+
+    if($order != null)
+    {
+      $this->db->order_by($order, $order_ori);
     }
 
     return $this->db->get($table, $limit, $offset);
@@ -21,6 +29,16 @@ class M_core extends CI_Model {
     return $this->db->trans_status();
   }
 
+  public function insert_berita($table, $data)
+  {
+    $this->db->trans_start();
+    $image = $this->_uploadImage();
+    $data['gambar'] = $image;
+    $this->db->insert($table, $data);
+    $this->db->trans_complete();
+    return $this->db->trans_status();
+  }
+
   public function update($table, $where, $data)
   {
     $this->db->trans_start();
@@ -28,6 +46,32 @@ class M_core extends CI_Model {
     $this->db->update($table, $data);
     $this->db->trans_complete();
     return $this->db->trans_status();
+  }
+
+  public function destroy($table, $where = null)
+  {
+    $this->db->trans_start();
+    $this->db->delete($table, $where);
+    $this->db->trans_complete();
+    return $this->db->trans_status();
+  }
+
+  private function _uploadImage()
+  {
+    $config['upload_path']   = 'assets/img/berita';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['file_name']     = $this->nama_gambar;
+    $config['overwrite']     = TRUE;
+    $config['max_size']      = 100024;
+    $config['encrypt_name']  = TRUE;
+
+    $this->load->library('upload', $config);
+
+    if ($this->upload->do_upload('gambar')) {
+        return $this->upload->data("file_name");
+    }
+    
+    return "default-image.jpg";
   }
   
 

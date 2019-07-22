@@ -20,7 +20,7 @@
           <h6 class="m-0 font-weight-bold text-primary">Form</h6>
         </div>
         <div class="card-body">
-          <form id="form">
+          <form id="form" enctype="multipart/form-data">
             <div class="form-group">
               <label for="judul">Judul</label>
               <input type="text" class="form-control" id="judul" name="judul" required autofocus>

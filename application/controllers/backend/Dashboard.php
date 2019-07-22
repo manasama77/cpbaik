@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller {
     {
         $data['title'] = 'KSPPS Baytul Ikhtiar - Dashboard';
         $data['content'] = 'dashboard/index';
-        $data['js'] = 'dashboard.js';
+        $data['js']      = 'dashboard/dashboard_vitamin';
         $this->_template($data);
     }
 
