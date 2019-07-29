@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_core extends CI_Model {
 
-  public $nama_gambar = '';
-
   public function get($table, $limit = null, $offset = null, $where = null, $order = null, $order_ori = 'ASC')
   {
     // TEMPLATE get($table, $limit, $offset, $where, $order, $order_ori)
@@ -48,6 +46,21 @@ class M_core extends CI_Model {
     return $this->db->trans_status();
   }
 
+  public function update_berita($table, $data, $id)
+  {
+    $this->db->trans_start();
+    if(empty($_FILES['gambar']['name'])){
+      $image = $this->input->post('prev_gambar');
+    }else{
+      $image = $this->_uploadImage();
+    }
+    $data['gambar'] = $image;
+    $this->db->where('id', $id);
+    $this->db->update($table, $data);
+    $this->db->trans_complete();
+    return $this->db->trans_status();
+  }
+
   public function destroy($table, $where = null)
   {
     $this->db->trans_start();
@@ -59,8 +72,7 @@ class M_core extends CI_Model {
   private function _uploadImage()
   {
     $config['upload_path']   = 'assets/img/berita';
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['file_name']     = $this->nama_gambar;
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
     $config['overwrite']     = TRUE;
     $config['max_size']      = 100024;
     $config['encrypt_name']  = TRUE;

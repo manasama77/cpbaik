@@ -52,6 +52,60 @@
 
       }
     });
+
+    // FORM VALIDATE
+    $('#admin').validate({
+      debug: true,
+      errorClass: 'help-inline text-danger',
+      rules:{
+        username:{
+          required:true
+        },
+        keypass:{
+          required:true
+        },
+      },
+      submitHandler: function( form ) {
+        var username = $('#username').val();
+        if(username == '')
+        {
+          sweet('warning', 'Warning', 'Username tidak boleh kosong', '#username');
+        }else{
+          $.ajax({
+            url         : '<?=site_url('login/auth_admin');?>',
+            method      : 'POST',
+            data        : $('#admin').serialize(),
+            beforeSend  : function(){
+              $.blockUI({ message: '<i class="fas fa-spinner fa-spin"></i> Silahkan Tunggu...' });
+            },
+            statusCode  : {
+              200: function(result) {
+                generateToast('Success', 'Data Match...', 'success');
+                $.unblockUI();
+                setTimeout(function(){
+                  window.location.replace('<?=site_url('admin/dashboard');?>');
+                  $.unblockUI();
+                }, 2000);
+              },
+              400: function() {
+                $.unblockUI();
+                generateToast('Warning', 'Username / Password salah...', 'warning');
+                $('#nik').focus();
+              },
+              404: function() {
+                $.unblockUI();
+                generateToast('Warning', 'Page Not Found.', 'error');
+              },
+              500: function() {
+                $.unblockUI();
+                generateToast('Warning', 'Not connect with databasae.', 'error');
+              }
+            }
+          });
+        }
+
+      }
+    });
   });
 
   function sweet(type, title, text, focus)

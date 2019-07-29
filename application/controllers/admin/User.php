@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Berita extends CI_Controller {
+class User extends CI_Controller {
 
   public function __construct()
   {
@@ -11,30 +11,34 @@ class Berita extends CI_Controller {
 
   private function _template($data)
   {
-    $this->load->view('backend/template', $data);
+    if(empty($this->session->userdata('username'))){
+      redirect('login/admin','refresh');
+    }else{
+      $this->load->view('admin/template', $data);
+    }
   }
 
   public function index()
   {
-    $data['title']   = 'KSPPS Baytul Ikhtiar - List Berita Baik';
-    $data['content'] = 'berita/index';
-    $data['js']      = 'berita/berita_vitamin';
-    $table = 'berita';
-    $limit = null;
-    $offset = null;
-    $nik   = $this->session->userdata('nik');
-    $where = [
-      'created_nik' => $nik
-    ];
-    $order = 'id';
-    $order_ori = 'DESC';
+    $data['title']   = 'KSPPS Baytul Ikhtiar - User Management';
+    $data['content'] = 'admin/index';
+    $data['js']      = 'admin/admin_vitamin';
+    $table           = 'admin';
+    $limit           = null;
+    $offset          = null;
+    $where           = null;
+    $order           = 'id';
+    $order_ori       = 'DESC';
+    $a               = $this->uri->segment(4) - 1;
+    if($a < 0){
+      $a = 0;
+    }
 
     $jumlah_data = $this->mdb->get($table, $limit, $offset, $where, $order, $order_ori)->num_rows();
     $this->load->library('pagination');
-    $config['base_url']           = site_url('backend/berita/index');
+    $config['base_url']           = site_url('admin/admin/index');
     $config['total_rows']         = $jumlah_data;
     $config['per_page']           = 5;
-    $config['num_links']          = 2;
     $config['use_page_numbers']   = TRUE;
     $config['reuse_query_string'] = TRUE;
     
@@ -57,44 +61,67 @@ class Berita extends CI_Controller {
     $config['cur_tag_close']      = '<span class="sr-only">(current)</span></a></li>';
     $config['num_tag_open']       = '<li class="page-item">';
     $config['num_tag_close']      = '</li>';
-    $from                 = $this->uri->segment(3);
+    $from                         = $a * $config['per_page'];
     $this->pagination->initialize($config);
 
-    $data['arr_berita'] = $this->mdb->get($table, $config['per_page'], $from, $where, $order, $order_ori);
+    $data['arr_user'] = $this->mdb->get($table, $config['per_page'], $from, $where, $order, $order_ori);
 
     $this->_template($data);
   }
 
   public function create()
   {
-    $data['title']   = 'KSPPS Baytul Ikhtiar - Buat Berita Baik';
-    $data['content'] = 'berita/form';
-    $data['js']      = 'berita/berita_vitamin_form';
+    $data['title']   = 'KSPPS Baytul Ikhtiar - Buat User Baru';
+    $data['content'] = 'admin/form';
+    $data['js']      = 'admin/admin_vitamin_form';
     $this->_template($data);
+  }
+
+  public function cek_username()
+  {
+    $username = strtolower($this->input->get('username'));
+
+    $exec = $this->mdb->get('admin', null, null, ['username' => $username], null, null);
+
+    if($exec->num_rows() == 1){
+      $return = [
+        'code' => 400,
+        'description' => 'Username Telah Terdaftar' 
+      ];
+    }else{
+      $return = [
+        'code' => 200,
+        'description' => 'Username Dapat Digunakan' 
+      ];
+    }
+
+    echo json_encode($return);
+
   }
 
   public function store()
   {
-    $judul = $this->input->post('judul');
-    $isi   = nl2br($this->input->post('isi'));
-    $nik   = $this->session->userdata('nik');
-    $nama   = $this->session->userdata('nama');
+    $username = $this->input->post('username');
+    $password = strtolower($this->input->post('keypass'));
+    $nik   = $this->session->userdata('id');
+    $nama   = $this->session->userdata('username');
 
-    $table = 'berita';
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    $table = 'admin';
     $data = [
-      'judul'        => $judul,
-      'isi'          => $isi,
-      'kategori'     => 'Berita',
-      'created_nik'  => $nik,
-      'created_name' => $nama,
+      'username'     => $username,
+      'password'     => $password,
+      'status'       => 1,
       'created_date' => date('Y-m-d H:i:s'),
-      'status'       => 0,
+      'creator_id'   => $nik,
+      'creator_name' => $nama
     ];
-    $exec = $this->mdb->insert_berita($table, $data);
+    $exec = $this->mdb->insert($table, $data);
     if($exec === TRUE){
       $return = [
         'code'  => 200,
-        'flash' => 'Buat Berita Baik Berhasil'
+        'flash' => 'Buat User Baru Berhasil'
       ];
     }else{
       $return = [
@@ -109,9 +136,9 @@ class Berita extends CI_Controller {
   public function destroy()
   {
     $id = $this->input->post('id');
-    $judul = $this->input->post('judul');
+    $username = $this->input->post('username');
 
-    $table = 'berita';
+    $table = 'admin';
     $limit = null;
     $offset = null;
     $where = [
@@ -128,13 +155,13 @@ class Berita extends CI_Controller {
         $return = [
           'code' => 200,
           'id' => $id,
-          'judul' => $judul,
+          'username' => $username,
         ];
       }else{
         $return = [
           'code' => 500,
           'id' => $id,
-          'judul' => $judul,
+          'username' => $username,
         ];
       }
 
@@ -142,14 +169,32 @@ class Berita extends CI_Controller {
       $return = [
         'code' => 404,
         'id' => $id,
-        'judul' => $judul,
+        'username' => $username,
       ];
     }
 
     echo json_encode($return);
   }
 
+  public function reset()
+  {
+    $id = $this->input->post('id');
+    $pass = $this->input->post('pass');
+
+    $pass = password_hash($pass, PASSWORD_DEFAULT);
+
+    $exec = $this->mdb->update('admin', ['id' => $id], ['password' => $pass]);
+    if($exec){
+      $this->session->set_flashdata('status', 'Reset Password Berhasil');
+      redirect('admin/user/index','refresh');
+    }else{
+      $this->session->set_flashdata('status', 'Reset Password Gagal Silahkan Coba Kembali');
+      redirect('admin/user/index','refresh');
+    }
+
+  }
+
 }
 
-/* End of file Berita.php */
-/* Location: ./application/controllers/backend/Berita.php */
+/* End of file User.php */
+/* Location: ./application/controllers/admin/User.php */

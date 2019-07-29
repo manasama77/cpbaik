@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Berita extends CI_Controller {
+class Kisah extends CI_Controller {
 
   public function __construct()
   {
@@ -16,10 +16,10 @@ class Berita extends CI_Controller {
 
   public function index()
   {
-    $data['title']   = 'KSPPS Baytul Ikhtiar - List Berita Baik';
-    $data['content'] = 'berita/index';
-    $data['js']      = 'berita/berita_vitamin';
-    $table = 'berita';
+    $data['title']   = 'KSPPS Baytul Ikhtiar - List Kisah Baik';
+    $data['content'] = 'kisah/index';
+    $data['js']      = 'kisah/kisah_vitamin';
+    $table = 'kisah';
     $limit = null;
     $offset = null;
     $nik   = $this->session->userdata('nik');
@@ -31,7 +31,7 @@ class Berita extends CI_Controller {
 
     $jumlah_data = $this->mdb->get($table, $limit, $offset, $where, $order, $order_ori)->num_rows();
     $this->load->library('pagination');
-    $config['base_url']           = site_url('backend/berita/index');
+    $config['base_url']           = site_url('backend/kisah/index');
     $config['total_rows']         = $jumlah_data;
     $config['per_page']           = 5;
     $config['num_links']          = 2;
@@ -67,34 +67,33 @@ class Berita extends CI_Controller {
 
   public function create()
   {
-    $data['title']   = 'KSPPS Baytul Ikhtiar - Buat Berita Baik';
-    $data['content'] = 'berita/form';
-    $data['js']      = 'berita/berita_vitamin_form';
+    $data['title']   = 'KSPPS Baytul Ikhtiar - Buat Kisah Baik';
+    $data['content'] = 'kisah/form';
+    $data['js']      = 'kisah/kisah_vitamin_form';
     $this->_template($data);
   }
 
   public function store()
   {
     $judul = $this->input->post('judul');
-    $isi   = nl2br($this->input->post('isi'));
+    $video = $this->input->post('video');
     $nik   = $this->session->userdata('nik');
     $nama   = $this->session->userdata('nama');
 
-    $table = 'berita';
+    $table = 'kisah';
     $data = [
       'judul'        => $judul,
-      'isi'          => $isi,
-      'kategori'     => 'Berita',
+      'video'        => $video,
       'created_nik'  => $nik,
       'created_name' => $nama,
       'created_date' => date('Y-m-d H:i:s'),
       'status'       => 0,
     ];
-    $exec = $this->mdb->insert_berita($table, $data);
+    $exec = $this->mdb->insert($table, $data);
     if($exec === TRUE){
       $return = [
         'code'  => 200,
-        'flash' => 'Buat Berita Baik Berhasil'
+        'flash' => 'Buat Kisah Baik Berhasil'
       ];
     }else{
       $return = [
@@ -111,7 +110,7 @@ class Berita extends CI_Controller {
     $id = $this->input->post('id');
     $judul = $this->input->post('judul');
 
-    $table = 'berita';
+    $table = 'kisah';
     $limit = null;
     $offset = null;
     $where = [

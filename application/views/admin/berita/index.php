@@ -44,9 +44,29 @@
                   <td><?=$key->created_date;?></td>
                   <td class="text-center"><?=$status;?></td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-danger btn-sm" onClick="hapus('<?=$key->id;?>', '<?=$key->judul;?>');">
-                      <i class="fas fa-trash"></i> Hapus
-                    </button>
+                    <div class="btn-group">
+                      <?php
+                      if($key->status == '0'){
+                      ?>
+                      <button type="button" class="btn btn-info btn-sm" onClick="verify('<?=$key->id;?>', '<?=$key->judul;?>', '<?=$key->status;?>');">
+                        <i class="fas fa-thumbs-up"></i> Terbitkan
+                      </button>
+                      <?php
+                      }else{
+                      ?>
+                      <button type="button" class="btn btn-warning btn-sm" onClick="verify('<?=$key->id;?>', '<?=$key->judul;?>', '<?=$key->status;?>');">
+                        <i class="fas fa-thumbs-down"></i> Turunkan
+                      </button>
+                      <?php
+                      }
+                      ?>
+                      <button type="button" class="btn btn-danger btn-sm" onClick="hapus('<?=$key->id;?>', '<?=$key->judul;?>');">
+                        <i class="fas fa-trash"></i> Hapus
+                      </button>
+                      <button type="button" class="btn btn-success btn-sm" onClick="edit('<?=$key->id;?>', '<?=$key->judul;?>');">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
                   </td>
                 </tr>
               <?php 

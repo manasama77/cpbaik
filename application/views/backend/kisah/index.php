@@ -2,10 +2,10 @@
 
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800">
-    Berita Baik
+    Kisah Baik
     <div class="float-right">
-      <a href="<?=site_url('backend/berita/create');?>" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Buat Berita Baik
+      <a href="<?=site_url('backend/kisah/create');?>" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Buat Kisah Baik
       </a>
     </div>
   </h1>
@@ -17,7 +17,7 @@
       <!-- Circle Buttons -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">List Berita Baik</h6>
+          <h6 class="m-0 font-weight-bold text-primary">List Kisah Baik</h6>
         </div>
         <div class="card-body">
           <table class="table table-inverse">
@@ -25,6 +25,7 @@
               <tr>
                 <th>ID</th>
                 <th>Judul</th>
+                <th>Video</th>
                 <th>Creator</th>
                 <th>Created Date</th>
                 <th class="text-center">Status</th>
@@ -40,6 +41,7 @@
                 <tr>
                   <td><?=$key->id;?></td>
                   <td><?=$key->judul;?></td>
+                  <td><?=$key->video;?></td>
                   <td><?=$key->created_name;?></td>
                   <td><?=$key->created_date;?></td>
                   <td class="text-center"><?=$status;?></td>

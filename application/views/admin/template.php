@@ -18,6 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="<?=base_url('assets/');?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?=base_url();?>vendor/toast/jquery.toast.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url();?>vendor/summernote/summernote-bs4.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -25,15 +26,15 @@
 
     <div id="wrapper">
 
-        <?php $this->load->view('backend/partials/sidebar'); ?>
+        <?php $this->load->view('admin/partials/sidebar'); ?>
 
         <div id="content-wrapper" class="d-flex flex-column">
 
             <div id="content">
 
-                <?php $this->load->view('backend/partials/topbar'); ?>
-                <?php $this->load->view('backend/'.$content); ?>
-                <?php $this->load->view('backend/partials/footer'); ?>
+                <?php $this->load->view('admin/partials/topbar'); ?>
+                <?php $this->load->view('admin/'.$content); ?>
+                <?php $this->load->view('admin/partials/footer'); ?>
 
             </div>
 
@@ -81,9 +82,11 @@
     <script src="<?=base_url();?>vendor/toast/jquery.toast.min.js"></script>
     <script src="<?=base_url();?>vendor/validate/jquery.validate.min.js"></script>
     <script src="<?=base_url();?>vendor/validate/additional-methods.min.js"></script>
+    <script src="<?=base_url();?>vendor/summernote/summernote-bs4.min.js"></script>
+    <script src="<?=base_url();?>vendor/summernote/lang/summernote-id-ID.js"></script>
 
 
 </body>
 
 </html>
-<?php $this->load->view('backend/'.$js); ?>
+<?php $this->load->view('admin/'.$js); ?>

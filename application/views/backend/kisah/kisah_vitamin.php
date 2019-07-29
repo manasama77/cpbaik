@@ -7,8 +7,8 @@
   {
     swal.fire({
       type: "question",
-      title: "Hapus Berita?",
-      html: "Kamu akan menghapus berita "+judul+"?<br><b><div class=\"text-danger\">Berita yang sudah di hapus tidak dapat dikembalikan kembali!</div></b>",
+      title: "Hapus Kisah?",
+      html: "Kamu akan menghapus kisah "+judul+"?<br><b><div class=\"text-danger\">Kisah yang sudah di hapus tidak dapat dikembalikan kembali!</div></b>",
       focusConfirm: false,
       showConfirmButton: true,
       showCancelButton: true,
@@ -22,7 +22,7 @@
     .then((result) => {
       if (result.value) {
         $.ajax({
-          url         : '<?=site_url('backend/berita/destroy');?>',
+          url         : '<?=site_url('backend/kisah/destroy');?>',
           method      : 'POST',
           data        : { 
             id:id, 
@@ -54,7 +54,7 @@
             setTimeout(function(){
               console.log("PROCESS HAPUS BERHASIL");
               $.unblockUI();
-              window.location.replace('<?=site_url('backend/berita/index');?>');
+              window.location.replace('<?=site_url('backend/kisah/index');?>');
             }, 2000);
 
           }else if(result.code == 500){

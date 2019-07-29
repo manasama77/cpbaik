@@ -16,7 +16,11 @@ class Login extends CI_Controller {
 
   public function index($tipe)
   {
-    $data['title'] = 'KSPPS Baytul Ikhtiar - Login Karyawan';
+    if($tipe == "karyawan"){
+      $data['title'] = 'KSPPS Baytul Ikhtiar - Login Karyawan';
+    }elseif($tipe == "admin"){
+      $data['title'] = 'KSPPS Baytul Ikhtiar - Login Admin';
+    }
     $data['tipe'] = $tipe;
     $this->_template($data);
   }
@@ -64,6 +68,43 @@ class Login extends CI_Controller {
 
     }
 
+  }
+
+  public function auth_admin()
+  {
+    $username = $this->input->post('username');
+    $password = $this->input->post('keypass');
+    $arr_admin = $this->mcore->get('admin', null, null, ['username' => $username, 'status' => '1'], null, null);
+    foreach ($arr_admin->result() as $key) {
+      $id = $key->id;
+      $password_db = $key->password;
+    }
+
+    $compare = password_verify($password, $password_db);
+
+    if($compare === true){
+      $this->mcore->update('admin', ['username' => $username, 'status' => '1'], ['last_login' => date('Y-m-d H:i:s')]);
+      $this->session->set_userdata('id', $id);
+      $this->session->set_userdata('username', $username);
+      $return = [
+        'status' => 200,
+        'desc' => ''
+      ];
+    }else{
+      $return = [
+        'status' => 400,
+        'desc' => ''
+      ];
+    }
+
+    echo json_encode($return);
+
+  }
+
+  public function logout()
+  {
+    $this->session->sess_destroy();
+    redirect(site_url('beranda'),'refresh');
   }
 
 }

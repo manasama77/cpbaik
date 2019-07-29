@@ -28,9 +28,6 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <?php
-      if($tipe == "karyawan"){
-      ?>
       <div class="col-6">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -60,44 +57,6 @@
         </div>
 
       </div>
-    <?php } ?>
-
-    <?php
-    if($tipe == "admin"){
-    ?>
-    <div class="col-6">
-
-      <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0">
-          <!-- Nested Row within Card Body -->
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="p-5">
-                <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4"><?=$title;?></h1>
-                </div>
-                <form id="admin">
-                  <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukan Username" required autofocus>
-                  </div>
-                  <div class="form-group">
-                    <input type="password" class="form-control form-control-user" id="keypass" name="keypass" placeholder="Masukan Password" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-user btn-block">
-                    Login as Admin
-                  </button>
-                  <a href="<?=site_url('beranda');?>" class="btn btn-secondary btn-user btn-block">
-                    Kembali Ke Beranda
-                  </a>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <?php } ?>
 
     </div>
 
@@ -122,4 +81,4 @@
 
 </html>
 
-<?php $this->load->view('login_vitamin'); ?>
+<?php $this->load->view('login_admin_vitamin'); ?>
