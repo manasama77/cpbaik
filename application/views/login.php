@@ -76,7 +76,7 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4"><?=$title;?></h1>
                 </div>
-                <form id="admin">
+                <form id="adminform">
                   <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukan Username" required autofocus>
                   </div>

@@ -1,11 +1,27 @@
 <script>
   $(document).ready(function(){
+    // SUMERNOTE
+    $('#isi').summernote({
+      placeholder: 'Isi Berita...',
+      tabsize: 2,
+      height: 200,
+      lang: 'id-ID',
+      toolbar: [
+        ['insert', ['picture','link','table','hr',]],
+        ['font', ['fontname','fontsize','color','forecolor','backcolor','bold','italic','underline','strikethrough','superscript','subscript','clear']],
+        ['para', ['style','ol','ul','paragraph','height']],
+        ['misc', ['fullscreen','codeview','undo','redo','help']],
+      ]
+    });
+    // SUMERNOTE
+
     // FORM VALIDATE
     $('#form').validate({
       debug: true,
       errorClass: 'help-inline text-danger',
       rules:{
         judul:{ required:true },
+        sekilas:{ required:true, maxlength:200 },
         isi:{ required:true },
       },
       submitHandler: function( form ) {

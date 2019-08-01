@@ -21,6 +21,7 @@
       errorClass: 'help-inline text-danger',
       rules:{
         judul:{ required:true },
+        sekilas:{ required:true, maxlength:200 },
         isi:{ required:true },
       },
       submitHandler: function( form ) {

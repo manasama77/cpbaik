@@ -24,12 +24,12 @@
           <div class="menu">
             <ul class="nav nav-tabs" role="tablist">
               <li role="presentation">
-                <a href="<?=site_url('home');?>" <?=($this->uri->segment(1)=="" || $this->uri->segment(1)=="home")? 'class="active"' : ''?> >Beranda</a>
+                <a href="<?=site_url('/');?>" <?=($this->uri->segment(1)=="" || $this->uri->segment(1)=="")? 'class="active"' : ''?> >Beranda</a>
               </li>
               <li role="presentation">
                 <a href="<?=site_url('tentangkami');?>" <?=($this->uri->segment(1)=="tentangkami")? 'class="active"' : ''?> >Tentang Kami</a>
               </li>
-              <li role="presentation"><a href="<?=site_url('Berita');?>" <?=($this->uri->segment(1)=="berita")? 'class="active"' : ''?>>Berita Baik</a></li>
+              <li role="presentation"><a href="<?=site_url('berita');?>" <?=($this->uri->segment(1)=="berita")? 'class="active"' : ''?>>Berita Baik</a></li>
               <li role="presentation"><a href="about.html">Kisah Baik</a></li>
               <li role="presentation"><a href="services.html">Hubungi Kami</a></li>
               <li role="presentation">

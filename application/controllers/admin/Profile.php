@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Berita extends CI_Controller {
+class Profile extends CI_Controller {
 
   public function __construct()
   {
@@ -20,15 +20,15 @@ class Berita extends CI_Controller {
 
   public function index()
   {
-    $data['title']   = 'KSPPS Baytul Ikhtiar - List Berita Baik';
-    $data['content'] = 'berita/index';
-    $data['js']      = 'berita/berita_vitamin';
+    $data['title']   = 'KSPPS Baytul Ikhtiar - Profile Baik';
+    $data['content'] = 'profile/index';
+    $data['js']      = 'profile/profile_vitamin';
     $table           = 'berita';
     $limit           = null;
     $offset          = null;
-    $where           = ['kategori' => 'Berita'];
+    $where           = ['kategori' => 'Profile'];
     $order           = 'id';
-    $order_ori       = 'DESC';
+    $order_ori       = 'ASC';
     $a               = $this->uri->segment(4) - 1;
     if($a < 0){
       $a = 0;
@@ -36,7 +36,7 @@ class Berita extends CI_Controller {
 
     $jumlah_data = $this->mdb->get($table, $limit, $offset, $where, $order, $order_ori)->num_rows();
     $this->load->library('pagination');
-    $config['base_url']           = site_url('admin/berita/index');
+    $config['base_url']           = site_url('admin/profile/index');
     $config['total_rows']         = $jumlah_data;
     $config['per_page']           = 5;
     $config['use_page_numbers']   = TRUE;
@@ -80,7 +80,6 @@ class Berita extends CI_Controller {
   public function store()
   {
     $judul = $this->input->post('judul');
-    $sekilas = $this->input->post('sekilas');
     $isi   = nl2br($this->input->post('isi'));
     $nik   = $this->session->userdata('id');
     $nama   = $this->session->userdata('username');
@@ -94,7 +93,6 @@ class Berita extends CI_Controller {
       'created_name' => $nama,
       'created_date' => date('Y-m-d H:i:s'),
       'status'       => 0,
-      'sekilas'      => $sekilas,
     ];
     $exec = $this->mdb->insert_berita($table, $data);
     if($exec === TRUE){
@@ -182,9 +180,9 @@ class Berita extends CI_Controller {
   public function edit($id)
   {
     $data['arr'] = $this->mdb->get('berita', null, null, ['id' => $id], null, null);
-    $data['title']   = 'KSPPS Baytul Ikhtiar - Edit Berita Baik';
-    $data['content'] = 'berita/form_edit';
-    $data['js']      = 'berita/berita_vitamin_form_edit';
+    $data['title']   = 'KSPPS Baytul Ikhtiar - Edit Profile Baik';
+    $data['content'] = 'profile/form_edit';
+    $data['js']      = 'profile/profile_vitamin_form_edit';
     $this->_template($data);
   }
 
@@ -200,7 +198,7 @@ class Berita extends CI_Controller {
     $data = [
       'judul'        => $judul,
       'isi'          => $isi,
-      'kategori'     => 'Berita',
+      'kategori'     => 'Profile',
       'created_nik'  => $nik,
       'created_name' => $nama,
       'created_date' => date('Y-m-d H:i:s'),
@@ -210,7 +208,7 @@ class Berita extends CI_Controller {
     if($exec === TRUE){
       $return = [
         'code'  => 200,
-        'flash' => 'Edit Berita Baik Berhasil'
+        'flash' => 'Edit Profile Baik Berhasil'
       ];
     }else{
       $return = [

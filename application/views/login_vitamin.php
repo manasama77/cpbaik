@@ -2,7 +2,7 @@
   $(document).ready(function(){
     // FORM VALIDATE
     $('#karyawan').validate({
-      debug: true,
+      debug: false,
       errorClass: 'help-inline text-danger',
       rules:{
         nik:{
@@ -54,7 +54,7 @@
     });
 
     // FORM VALIDATE
-    $('#admin').validate({
+    $('#adminform').validate({
       debug: true,
       errorClass: 'help-inline text-danger',
       rules:{
@@ -74,19 +74,11 @@
           $.ajax({
             url         : '<?=site_url('login/auth_admin');?>',
             method      : 'POST',
-            data        : $('#admin').serialize(),
+            data        : $('#adminform').serialize(),
             beforeSend  : function(){
               $.blockUI({ message: '<i class="fas fa-spinner fa-spin"></i> Silahkan Tunggu...' });
             },
             statusCode  : {
-              200: function(result) {
-                generateToast('Success', 'Data Match...', 'success');
-                $.unblockUI();
-                setTimeout(function(){
-                  window.location.replace('<?=site_url('admin/dashboard');?>');
-                  $.unblockUI();
-                }, 2000);
-              },
               400: function() {
                 $.unblockUI();
                 generateToast('Warning', 'Username / Password salah...', 'warning');
@@ -101,6 +93,21 @@
                 generateToast('Warning', 'Not connect with databasae.', 'error');
               }
             }
+          })
+          .done(function(result){
+            result = $.parseJSON(result);
+            console.log(result);
+            if(result.code == 200){
+              generateToast('Success', 'Data Match...', 'success');
+              setTimeout(function(){
+              window.location.replace('<?=site_url('admin/dashboard');?>');
+                $.unblockUI();
+              }, 2000);  
+            }else{
+              generateToast('Oops', 'Username / Password Salah', 'warning');
+              $.unblockUI();
+            }
+            
           });
         }
 

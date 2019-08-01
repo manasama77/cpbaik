@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['login/karyawan'] = 'login/index/karyawan';
 $route['login/admin'] = 'login/index/admin';
+$route['berita/:num'] = 'berita/index';

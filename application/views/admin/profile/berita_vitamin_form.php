@@ -4,24 +4,19 @@
     $('#isi').summernote({
       placeholder: 'Isi Berita...',
       tabsize: 2,
+      height: 200,
       lang: 'id-ID',
       toolbar: [
         ['insert', ['picture','link','table','hr',]],
         ['font', ['fontname','fontsize','color','forecolor','backcolor','bold','italic','underline','strikethrough','superscript','subscript','clear']],
         ['para', ['style','ol','ul','paragraph','height']],
         ['misc', ['fullscreen','codeview','undo','redo','help']],
-      ],
-      callback: {
-        onImageUpload: function(files){
-          alert(files[0]);
-          uploadfile(files[0]);
-        }
-      }
+      ]
     });
     // SUMERNOTE
     
     // FORM VALIDATE
-    $('#formedit').validate({
+    $('#form').validate({
       debug: true,
       errorClass: 'help-inline text-danger',
       rules:{
@@ -30,7 +25,7 @@
       },
       submitHandler: function( form ) {
         $.ajax({
-          url         : '<?=site_url('admin/berita/update');?>',
+          url         : '<?=site_url('admin/berita/store');?>',
           method      : 'POST',
           data        : new FormData(form),
           processData  : false,
@@ -78,26 +73,6 @@
       }
     });
   });
-
-  function uploadfile(file)
-  {
-    data = new FormData();
-    data.append("file", file);
-
-    $.ajax({
-      url: '<?=site_url('admin/berita/upload');?>',
-      cache: false,
-      type: 'POST',
-      data: data,
-      contentType: false,
-      processData: false,
-      success: function(url)
-      {
-        console.log(url);
-        $('#isi').summernote("insertImage", url);
-      }
-    });
-  }
 
   function sweet(type, title, text)
   {

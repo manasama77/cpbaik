@@ -73,27 +73,24 @@ class Login extends CI_Controller {
   public function auth_admin()
   {
     $username = $this->input->post('username');
-    $password = $this->input->post('keypass');
-    $arr_admin = $this->mcore->get('admin', null, null, ['username' => $username, 'status' => '1'], null, null);
-    foreach ($arr_admin->result() as $key) {
-      $id = $key->id;
-      $password_db = $key->password;
-    }
+    $password = sha1($this->input->post('keypass'));
+    $arr_admin = $this->mcore->get('admin', 1, 0, ['username' => $username, 'status' => '1', 'password' => $password], null, null);
 
-    $compare = password_verify($password, $password_db);
-
-    if($compare === true){
+    if($arr_admin->num_rows() == 1){
       $this->mcore->update('admin', ['username' => $username, 'status' => '1'], ['last_login' => date('Y-m-d H:i:s')]);
-      $this->session->set_userdata('id', $id);
-      $this->session->set_userdata('username', $username);
+      $this->session->set_userdata([
+        'id' => $arr_admin->row()->id,
+        'username' => $username,
+      ]);
       $return = [
-        'status' => 200,
+        'code' => 200,
         'desc' => ''
       ];
     }else{
       $return = [
-        'status' => 400,
-        'desc' => ''
+        'code' => 400,
+        'desc' => '',
+        'lq' => $this->db->last_query(),
       ];
     }
 

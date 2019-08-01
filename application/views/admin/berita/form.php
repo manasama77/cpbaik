@@ -26,6 +26,10 @@
               <input type="text" class="form-control" id="judul" name="judul" required autofocus>
             </div>
             <div class="form-group">
+              <label for="sekilas">Sekilas</label>
+              <input type="text" class="form-control" id="sekilas" name="sekilas" required>
+            </div>
+            <div class="form-group">
               <label for="isi">Isi</label>
               <textarea class="form-control" id="isi" name="isi" rows="10" required></textarea>
             </div>

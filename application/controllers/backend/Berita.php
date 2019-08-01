@@ -11,7 +11,11 @@ class Berita extends CI_Controller {
 
   private function _template($data)
   {
-    $this->load->view('backend/template', $data);
+    if(empty($this->session->userdata('nik'))){
+      redirect('login/karyawan','refresh');
+    }else{
+      $this->load->view('backend/template', $data);
+    }
   }
 
   public function index()
@@ -23,9 +27,7 @@ class Berita extends CI_Controller {
     $limit = null;
     $offset = null;
     $nik   = $this->session->userdata('nik');
-    $where = [
-      'created_nik' => $nik
-    ];
+    $where = ['created_nik' => $nik];
     $order = 'id';
     $order_ori = 'DESC';
 
@@ -76,6 +78,7 @@ class Berita extends CI_Controller {
   public function store()
   {
     $judul = $this->input->post('judul');
+    $sekilas = $this->input->post('sekilas');
     $isi   = nl2br($this->input->post('isi'));
     $nik   = $this->session->userdata('nik');
     $nama   = $this->session->userdata('nama');
@@ -89,6 +92,7 @@ class Berita extends CI_Controller {
       'created_name' => $nama,
       'created_date' => date('Y-m-d H:i:s'),
       'status'       => 0,
+      'sekilas'      => $sekilas,
     ];
     $exec = $this->mdb->insert_berita($table, $data);
     if($exec === TRUE){

@@ -2,7 +2,7 @@
   $(document).ready(function(){
     // SUMERNOTE
     $('#isi').summernote({
-      placeholder: 'Isi Berita...',
+      placeholder: 'Isi Profile...',
       tabsize: 2,
       lang: 'id-ID',
       toolbar: [
@@ -30,7 +30,7 @@
       },
       submitHandler: function( form ) {
         $.ajax({
-          url         : '<?=site_url('admin/berita/update');?>',
+          url         : '<?=site_url('admin/profile/update');?>',
           method      : 'POST',
           data        : new FormData(form),
           processData  : false,
@@ -66,7 +66,7 @@
           {
             sweet('success', 'Sukses', result.flash);
             setTimeout(function(){
-              window.location.replace('<?=site_url('admin/berita/index');?>');
+              window.location.replace('<?=site_url('admin/profile/index');?>');
               $.unblockUI();
             }, 2000);
           }else{
@@ -85,7 +85,7 @@
     data.append("file", file);
 
     $.ajax({
-      url: '<?=site_url('admin/berita/upload');?>',
+      url: '<?=site_url('admin/profile/upload');?>',
       cache: false,
       type: 'POST',
       data: data,

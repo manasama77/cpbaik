@@ -1,4 +1,4 @@
-<div class="feature">
+<div class="feature hidden-sm hidden-md hidden-lg">
     <div class="container">
         <div class="text-center">
             <div class="col-md-4">

@@ -1,3 +1,7 @@
+<?php
+$a = $this->uri->segment(2);
+$b = $this->uri->segment(3);
+?>
 <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
@@ -8,7 +12,7 @@
 
     <hr class="sidebar-divider my-0">
 
-    <li class="nav-item active">
+    <li class="nav-item <?php if($a=='dashboard'){ echo 'active'; }?>">
         <a class="nav-link" href="<?=site_url('backend/dashboard/index');?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
@@ -23,14 +27,14 @@
         Berita Baik
     </div>
 
-    <li class="nav-item">
+    <li class="nav-item <?php if($a=='berita' && $b=='create'){ echo 'active'; }?>">
         <a class="nav-link" href="<?=site_url('backend/berita/create');?>">
             <i class="fas fa-fw fa-plus"></i>
             <span>Buat Berita Baik</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item <?php if($a=='berita' && $b=='index'){ echo 'active'; }?>">
         <a class="nav-link" href="<?=site_url('backend/berita/index');?>">
             <i class="fas fa-fw fa-table"></i>
             <span>List Berita Baik</span>
@@ -45,14 +49,14 @@
         Kisah Baik
     </div>
 
-    <li class="nav-item">
+    <li class="nav-item <?php if($a=='kisah' && $b=='create'){ echo 'active'; }?>">
         <a class="nav-link" href="<?=site_url('backend/kisah/create');?>">
             <i class="fas fa-fw fa-plus"></i>
             <span>Buat Kisah Baik</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item <?php if($a=='kisah' && $b=='index'){ echo 'active'; }?>">
         <a class="nav-link" href="<?=site_url('backend/kisah/index');?>">
             <i class="fab fa-fw fa-youtube"></i>
             <span>List Kisah Baik</span>

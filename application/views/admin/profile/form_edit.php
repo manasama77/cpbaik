@@ -5,10 +5,10 @@ foreach ($arr->result() as $key) {
 
   <!-- Page Heading -->
   <h1 class="h4 mb-4 text-gray-800">
-    <i class="fas fa-fw fa-edit"></i> Edit Berita Baik
+    <i class="fas fa-fw fa-edit"></i> Edit Profile Baik
     <div class="float-right">
-      <a href="<?=site_url('admin/berita/index');?>" class="btn btn-secondary btn-sm">
-        <i class="fas fa-fw fa-backward"></i> Kembali ke List Berita Baik
+      <a href="<?=site_url('admin/profile/index');?>" class="btn btn-secondary btn-sm">
+        <i class="fas fa-fw fa-backward"></i> Kembali ke List Profile Baik
       </a>
     </div>
   </h1>
@@ -42,7 +42,7 @@ foreach ($arr->result() as $key) {
             </div>
             <div class="form-group">
               <label for="gambar" class="sr-only">Gambar</label>
-              <button type="submit" class="btn btn-primary btn-block">Edit Berita Baik</button>
+              <button type="submit" class="btn btn-primary btn-block">Edit Profile Baik</button>
             </div>
           </form>
         </div>

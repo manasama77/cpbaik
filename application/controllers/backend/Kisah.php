@@ -11,7 +11,11 @@ class Kisah extends CI_Controller {
 
   private function _template($data)
   {
-    $this->load->view('backend/template', $data);
+    if(empty($this->session->userdata('nik'))){
+      redirect('login/karyawan','refresh');
+    }else{
+      $this->load->view('backend/template', $data);
+    }
   }
 
   public function index()

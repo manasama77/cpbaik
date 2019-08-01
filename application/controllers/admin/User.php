@@ -101,12 +101,10 @@ class User extends CI_Controller {
 
   public function store()
   {
-    $username = $this->input->post('username');
-    $password = strtolower($this->input->post('keypass'));
+    $username = strtolower($this->input->post('username'));
+    $password = sha1($this->input->post('keypass'));
     $nik   = $this->session->userdata('id');
     $nama   = $this->session->userdata('username');
-
-    $password = password_hash($password, PASSWORD_DEFAULT);
 
     $table = 'admin';
     $data = [
@@ -179,9 +177,7 @@ class User extends CI_Controller {
   public function reset()
   {
     $id = $this->input->post('id');
-    $pass = $this->input->post('pass');
-
-    $pass = password_hash($pass, PASSWORD_DEFAULT);
+    $pass = sha1($this->input->post('pass'));
 
     $exec = $this->mdb->update('admin', ['id' => $id], ['password' => $pass]);
     if($exec){

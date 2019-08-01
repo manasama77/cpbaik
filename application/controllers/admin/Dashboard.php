@@ -3,18 +3,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
 
-    private function _template($data)
-    {
-        $this->load->view('admin/template', $data);
-    }
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model('M_core', 'mdb');
+  }
 
-    public function index()
-    {
-        $data['title'] = 'KSPPS Baytul Ikhtiar - Dashboard';
-        $data['content'] = 'dashboard/index';
-        $data['js']      = 'dashboard/dashboard_vitamin';
-        $this->_template($data);
+  private function _template($data)
+  {
+    if(empty($this->session->userdata('username'))){
+      redirect('login/admin','refresh');
+    }else{
+      $this->load->view('admin/template', $data);
     }
+  }
+
+  public function index()
+  {
+    $data['title'] = 'KSPPS Baytul Ikhtiar - Dashboard';
+    $data['content'] = 'dashboard/index';
+    $data['js']      = 'dashboard/dashboard_vitamin';
+    $data['berita'] = $this->mdb->get('berita', null, null, ['status' => '1', 'kategori' => 'Berita'], null, null)->num_rows();
+    $data['kisah'] = $this->mdb->get('kisah', null, null, ['status' => '1'], null, null)->num_rows();
+    $this->_template($data);
+  }
 
 }
 
