@@ -24,6 +24,7 @@ jQuery(function ($) {
   });
 
   // portfolio filter
+  /*
   $(window).load(function () {
     'use strict';
     var $portfolio_selectors = $('.portfolio-filter >li>a');
@@ -41,6 +42,7 @@ jQuery(function ($) {
       return false;
     });
   });
+  */
 
 
   //Pretty Photo
