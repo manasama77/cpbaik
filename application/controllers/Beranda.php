@@ -62,16 +62,21 @@ class Beranda extends CI_Controller {
     $content = curl_exec($ch);
     //close connection
     curl_close($ch);
-    $ret = json_decode($content);
+    $x = json_decode($content);
+
+    echo json_encode($x);
+    exit();
 
     //$get_par = ($ret->get_count_par_lancar / $ret->get_count_par_all) * 100;
 
+    /*
     $data['get_count_par_lancar'] = $ret->get_count_par_lancar;
     $data['get_count_par_all'] = $ret->get_count_par_all;
     $data['get_count_anggota'] = $ret->get_count_anggota;
     $data['get_sum_saldo'] = $ret->get_sum_saldo;
     $data['get_pembiayaan'] = $ret->get_pembiayaan;
     return $data;
+    */
   }
 
 }

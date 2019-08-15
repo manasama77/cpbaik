@@ -20,6 +20,7 @@
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
     ======================================================= -->
+  <link rel="icon" href="<?=site_url('logo_sm.png');?>">
   </head>
 
   <body>
@@ -37,15 +38,17 @@
     <script src="<?=base_url('assets/');?>js/jquery.isotope.min.js"></script>
     <script src="<?=base_url('assets/');?>js/wow.min.js"></script>
     <script src="<?=base_url('assets/');?>js/functions.js"></script>
+    <script src="<?=base_url('assets/');?>js/jquery.number.min.js"></script>
+    <script src="<?=base_url();?>vendor/blockui/jquery.blockUI.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
       $(document).ready(function(){
+
         $('.single-item').slick({
-          mobileFirst: true,
           adaptiveHeight: true,
           infinite:true,
           autoplay: true,
-          autoplaySpeed: 4000,
+          autoplaySpeed: 2000,
           slideToShow:1,
           slideToScroll:1,
           dots: false,
@@ -53,7 +56,79 @@
           cssEase: 'linear',
           arrows: false,
         });
+
+        $.ajax({
+          url         : '<?=site_url('beranda/sirkah');?>',
+          method      : 'GET',
+          dataType    : 'JSON',
+          beforeSend  : function(){
+            $('#jumlah_anggota_block').block({ message: 'Please Wait' });
+            $('#outstanding_block').block({ message: 'Please Wait' });
+            $('#par_block').block({ message: 'Please Wait' });
+          },
+          statusCode  : {
+            404: function() {
+              $('#jumlah_anggota_block').unblock();
+              $('#outstanding_block').unblock();
+              $('#par_block').unblock();
+              generateToast('Warning', 'Page Not Found.', 'error');
+            },
+            500: function() {
+              $('#jumlah_anggota_block').unblock();
+              $('#outstanding_block').unblock();
+              $('#par_block').unblock();
+              generateToast('Warning', 'Not connect with databasae.', 'error');
+            }
+          }
+        })
+        .done(function(result){
+          console.log(result);
+          var jumlahanggota = $.number(result.get_count_anggota[0].count, 0);
+          $('#jumlah_anggota').text(jumlahanggota);
+
+          var rawoutstanding = parseInt(result.get_outstanding[0].sum) / 1000000;
+          var outstanding = $.number(rawoutstanding, 2);
+          $('#outstanding').text(outstanding + ' JUTA');
+
+          var rawpar = (parseInt(result.get_count_par_lancar[0].count) / parseInt(result.get_count_par_all[0].count)) * 100;
+          var par = $.number(rawpar, 2);
+          $('#par').text(par + ' %');
+
+          $('#jumlah_anggota_block').unblock();
+          $('#outstanding_block').unblock();
+          $('#par_block').unblock();
+        });
+
       });
+
+      function generateToast(heading, message, color){
+        $.toast({
+          text: message,
+          heading: heading,
+          icon: color,
+          showHideTransition: 'slide',
+          allowToastClose: true,
+          hideAfter: 5000,
+          stack: 5,
+          position: 'bottom-right',
+          textAlign: 'left',
+          loader: true,
+          loaderBg: '#9EC600',    
+        });
+      }
+
+      function addCommas(nStr)
+      {
+        nStr += '';
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+      }
     </script>
 
   </body>

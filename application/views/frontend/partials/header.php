@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="top:-17px !important;">
     <div class="navigation">
       <div class="container">
         <div class="navbar-header">

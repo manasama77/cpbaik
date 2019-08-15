@@ -1,14 +1,13 @@
-<section id="main-slider" class="no-margin">
+<section id="main-slider" >
   <div class="single-item">
-
     <div>
-      <img src="<?=base_url('assets/images/slider/4.jpg');?>" class="img-responsive" />
+      <img src="<?=base_url('assets/images/slider/1.png');?>" class="img-responsive" />
     </div>
     <div>
-      <img src="<?=base_url('assets/images/slider/5.jpg');?>" class="img-responsive" />
+      <img src="<?=base_url('assets/images/slider/2.jpg');?>" class="img-responsive" />
     </div>
     <div>
-      <img src="<?=base_url('assets/images/slider/3.jpg');?>" class="img-responsive" />
+      <img src="<?=base_url('assets/images/slider/1.png');?>" class="img-responsive" />
     </div>
   </div>
 </section>

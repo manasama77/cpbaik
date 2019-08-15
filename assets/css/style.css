@@ -135,6 +135,7 @@ a:hover {
 	border-radius:0;
 	color:#333;
 	padding:30px;
+  padding-bottom:25px;
 }
 
 .nav-tabs > li > a:hover {

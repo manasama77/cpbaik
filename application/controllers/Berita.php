@@ -82,6 +82,19 @@ class Berita extends CI_Controller {
     $this->_template($data);
   }
 
+  public function profile()
+  {
+    $id_berita   = $this->uri->segment(3);
+    $table = 'berita';
+    $where = ['status' => '1', 'kategori' => 'Profile', 'id' => $id_berita];
+
+    $data['title'] = 'KSPPS Baytul Ikhtiar - Profile Baik';
+    $data['arr_berita'] = $this->mdb->get($table, null, null, $where, 'id', 'ASC');
+    $data['content'] = 'read_profile';
+
+    $this->_template($data);
+  }
+
 }
 
 /* End of file Berita.php */

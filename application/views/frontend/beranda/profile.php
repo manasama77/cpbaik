@@ -15,8 +15,10 @@
           $thumbnail = base_url('assets/img/berita/'.$key->gambar);
       ?>
         <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="<?=$delay;?>ms">
-          <img src="<?=$thumbnail;?>" class="img-responsive img-thumbnail" />
-          <h3><?=$key->judul;?></h3>
+          <a href="<?=site_url('berita/profile/'.$key->id);?>">
+            <img src="<?=$thumbnail;?>" class="img-responsive img-thumbnail" />
+            <h3><?=$key->judul;?></h3>
+          </a>
         </div>
       <?php
           $delay += 300;

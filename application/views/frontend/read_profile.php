@@ -2,7 +2,7 @@
   <div class="container">
     <div class="breadcrumb">
       <li><a href="<?=site_url('/');?>">Home</a></li>
-      <li>Berita Baik</li>
+      <li>Profile Baik</li>
     </div>
   </div>
 </div>
@@ -54,12 +54,12 @@
 
             <div class="blog-item">
               <div class="row">
-                <div class="col-xs-12 col-sm-2">
+                <!--div class="col-xs-12 col-sm-2">
                   <div class="entry-meta">
                     <span id="publish_date"><?=date('d M Y', strtotime($key->created_date));?></span>
                     <span style="color:#000;"><i class="fa fa-user"></i> <?=$key->created_name;?></span>
                   </div>
-                </div>
+                </div-->
 
                 <div class="col-xs-12 col-sm-10 blog-content">
                   <img class="img-responsive img-thumbnail img-blog" src="<?=$thumbnail;?>" width="200px" alt="" />
@@ -70,7 +70,7 @@
                     ?>
                   </p>
                   <hr>
-                  <a href="<?=site_url('berita');?>" class="btn btn-info readmore"><i class="fa fa-angle-left"></i> Kembali</a>
+                  <a href="<?=site_url('/');?>" class="btn btn-info readmore"><i class="fa fa-angle-left"></i> Kembali</a>
                 </div>
               </div>
             </div>
