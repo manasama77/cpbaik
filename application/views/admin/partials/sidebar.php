@@ -78,6 +78,28 @@ $b = $this->uri->segment(3);
         </a>
     </li>
 
+    <li class="nav-item <?php if($a=='tentang' && $b=='index'){ echo 'active'; }?>">
+        <a class="nav-link" href="<?=site_url('admin/tentang/index');?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tentang Kami</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Buku Tamu
+    </div>
+
+    <li class="nav-item <?php if($a=='hubungi' && $b=='index'){ echo 'active'; }?>">
+        <a class="nav-link" href="<?=site_url('admin/hubungi/index');?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>List Buku Tamu</span>
+        </a>
+    </li>
+
     <hr class="sidebar-divider">
 
     <!-- Heading -->

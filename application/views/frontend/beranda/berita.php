@@ -15,9 +15,11 @@
           $thumbnail = base_url('assets/img/berita/'.$key->gambar);
       ?>
         <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="<?=$delay;?>ms">
-          <img src="<?=$thumbnail;?>" class="img-responsive img-thumbnail" />
-          <h3><?=$key->judul;?></h3>
-          <p><?=$key->sekilas;?></p>
+          <a href="<?=site_url('berita/read/'.$key->id);?>">
+            <img src="<?=$thumbnail;?>" class="img-responsive img-thumbnail" />
+            <h3><?=$key->judul;?></h3>
+            <p><?=$key->sekilas;?></p>
+          </a>
         </div>
       <?php
           $delay += 300;
@@ -61,7 +63,7 @@
       ?>
 
       <div class="col-md-12 wow fadeInUp text-center" data-wow-duration="1000ms" data-wow-delay="1700ms">
-        <button class="btn btn-info">Lihat Semua Kisah</button>
+        <a href="<?=site_url('berita');?>">Lihat Semua Kisah</a>
       </div>
 
     </div>

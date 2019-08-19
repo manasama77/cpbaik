@@ -19,6 +19,8 @@ class Tentangkami extends CI_Controller {
     //$this->sirkah();
     $data['title'] = 'KSPPS Baytul Ikhtiar - Tentang Kami';
     $data['content'] = 'tentangkami';
+    $table = 'tentang';
+    $data['tentang'] = $this->mdb->get($table, null, null, null, null, 'ASC');
     $this->_template($data);
 
   }

@@ -37,6 +37,22 @@ class M_core extends CI_Model {
     return $this->db->trans_status();
   }
 
+  public function update_tentang($table, $data)
+  {
+    $this->db->trans_start();
+    if(empty($_FILES['gambar']['name'])){
+      $image = $this->input->post('prev_gambar');
+    }else{
+      $image = $this->_uploadImageTentang();
+    }
+    
+    $data['banner'] = $image;
+    $this->db->where('id', '1');
+    $this->db->update($table, $data);
+    $this->db->trans_complete();
+    return $this->db->trans_status();
+  }
+
   public function update($table, $where, $data)
   {
     $this->db->trans_start();
@@ -72,6 +88,23 @@ class M_core extends CI_Model {
   private function _uploadImage()
   {
     $config['upload_path']   = 'assets/img/berita';
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    $config['overwrite']     = TRUE;
+    $config['max_size']      = 100024;
+    $config['encrypt_name']  = TRUE;
+
+    $this->load->library('upload', $config);
+
+    if ($this->upload->do_upload('gambar')) {
+        return $this->upload->data("file_name");
+    }
+    
+    return "default-image.jpg";
+  }
+
+  private function _uploadImageTentang()
+  {
+    $config['upload_path']   = 'assets/img/tentang';
     $config['allowed_types'] = 'gif|jpg|png|jpeg';
     $config['overwrite']     = TRUE;
     $config['max_size']      = 100024;

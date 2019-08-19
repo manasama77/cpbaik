@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
-//ini_set('max_execution_time', 0); 
-//ini_set('memory_limit','2048M');
+ini_set('max_execution_time', 0); 
+ini_set('memory_limit','2048M');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
