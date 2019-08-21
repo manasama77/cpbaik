@@ -4,9 +4,9 @@
   <h1 class="h4 mb-4 text-gray-800">
     <i class="fas fa-fw fa-plus"></i> Buat Berita Baik
     <div class="float-right">
-      <button type="button" class="btn btn-secondary btn-sm">
+      <a href="<?=site_url('backend/berita/index');?>" class="btn btn-secondary btn-sm">
         <i class="fas fa-fw fa-backward"></i> Kembali ke List Berita Baik
-      </button>
+      </a>
     </div>
   </h1>
 

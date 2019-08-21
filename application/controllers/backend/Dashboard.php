@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller {
 
   public function index()
   {
-    $data['title'] = 'KSPPS Baytul Ikhtiar - Dashboard';
+    $data['title']   = 'KSPPS Baytul Ikhtiar - Dashboard';
     $data['content'] = 'dashboard/index';
     $data['js']      = 'dashboard/dashboard_vitamin';
     $data['berita'] = $this->mdb->get('berita', null, null, ['created_nik' => $this->session->userdata('nik'), 'status' => '1', 'kategori' => 'Berita'], null, null)->num_rows();

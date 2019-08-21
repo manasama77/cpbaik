@@ -13,14 +13,19 @@
   <link rel="stylesheet" href="<?=base_url('assets/');?>css/animate.css">
   <link href="<?=base_url('assets/');?>css/prettyPhoto.css" rel="stylesheet">
   <link href="<?=base_url('assets/');?>css/style.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="<?=site_url('');?>assets/css/slick.css"/>
   <!-- =======================================================
     Theme Name: Company
     Theme URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
     ======================================================= -->
-  <link rel="icon" href="<?=site_url('logo_sm.png');?>">
+    <link rel="icon" href="<?=site_url('logo_sm.png');?>">
+    <style>
+      .borderless td, .borderless th {
+        border: none !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -40,7 +45,7 @@
     <script src="<?=base_url('assets/');?>js/functions.js"></script>
     <script src="<?=base_url('assets/');?>js/jquery.number.min.js"></script>
     <script src="<?=base_url();?>vendor/blockui/jquery.blockUI.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="<?=site_url();?>assets/js/slick.min.js"></script>
     <script>
       $(document).ready(function(){
 
@@ -125,7 +130,7 @@
         x2 = x.length > 1 ? '.' + x[1] : '';
         var rgx = /(\d+)(\d{3})/;
         while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+          x1 = x1.replace(rgx, '$1' + ',' + '$2');
         }
         return x1 + x2;
       }

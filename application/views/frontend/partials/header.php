@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
           </button>
           <div class="navbar-brand">
-            <a href="<?=site_url('home');?>">
+            <a href="<?=site_url('/');?>">
               <h1 style="color:#FF6347">
                 <img src="<?=base_url('assets/img/logo_sm.png');?>" style="width:50px;margin-top:-10px;" alt="LOGO BAIK SMALL">
                 <span style="color:#0000FF">BAYTUL
@@ -31,7 +31,9 @@
               </li>
               <li role="presentation"><a href="<?=site_url('berita');?>" <?=($this->uri->segment(1)=="berita")? 'class="active"' : ''?>>Berita Baik</a></li>
               <li role="presentation"><a href="<?=site_url('kisah');?>" <?=($this->uri->segment(1)=="kisah")? 'class="active"' : ''?>>Kisah Baik</a></li>
-              <li role="presentation"><a href="services.html">Hubungi Kami</a></li>
+              <li role="presentation">
+                <a href="<?=site_url('hubungi');?>" <?=($this->uri->segment(1)=="hubungi")? 'class="active"' : ''?>>Hubungi Kami</a>
+              </li>
               <li role="presentation">
                 <a href="#" data-toggle="dropdown">
                   Login <span class="fa fa-caret-down"></span>

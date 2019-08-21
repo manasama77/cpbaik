@@ -2,7 +2,7 @@
 $a = $this->uri->segment(2);
 $b = $this->uri->segment(3);
 ?>
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion toggled" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
             <img src="<?=base_url('assets/img/logo_sm.png');?>" style="width:50px;margin-top:-10px;" alt="LOGO BAIK SMALL">
