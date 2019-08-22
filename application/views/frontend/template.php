@@ -25,6 +25,15 @@
       .borderless td, .borderless th {
         border: none !important;
       }
+
+      .nav-tabs > li > a {
+        padding-top:15px !important;
+        padding-bottom:0px !important;
+      }
+
+      @media (max-width: 767px) {
+        .navbar-brand { padding-top: 15px !important;
+      }
     </style>
   </head>
 
