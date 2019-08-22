@@ -12,20 +12,12 @@
       <h3>Hubungi Kami</h3>
       <hr>
       <?php
-      if($this->session->flashdata('status') == 'ok'){
-      ?>
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Kirim Pesan Berhasil, Terima Kasih</strong>
-        </div>
-      <?php
-      }else{
-      ?>
-        <div class="alert alert-warning">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Kirim Pesan Gagal, Silahkan Coba Kembali</strong>
-        </div>
-      <?php
+      if($this->session->flashdata('status')){
+        if($this->session->flashdata('status') == 'ok'){
+          echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Kirim Pesan Berhasil, Terima Kasih</strong></div>';
+        }else{
+          echo '<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Kirim Pesan Gagal, Silahkan Coba Kembali</strong></div>';
+        }
       }
       ?>
       <div class="col-md-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">

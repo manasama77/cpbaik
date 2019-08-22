@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="<?=base_url('assets/');?>css/sb-admin-2.min.css" rel="stylesheet">
   <link href="<?=base_url();?>vendor/toast/jquery.toast.min.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="<?=site_url('logo_sm.png');?>">
 
 </head>
 
@@ -29,79 +30,117 @@
     <div class="row">
 
       <?php
+      if($tipe == "anggota"){
+      ?>
+        <div class="col-sm-12 col-md-4 offset-md-4">
+
+          <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+              <!-- Nested Row within Card Body -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="p-5">
+                    <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4"><?=$title;?></h1>
+                    </div>
+                    <form id="karyawan">
+                      <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="nia" name="nia" placeholder="Nomor Induk Anggota" required autofocus>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Login
+                      </button>
+                      <a href="<?=site_url('beranda');?>" class="btn btn-secondary btn-user btn-block">
+                        Kembali Ke Beranda
+                      </a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <?php } ?>
+    </div>
+
+    <div class="row">
+
+      <?php
       if($tipe == "karyawan"){
       ?>
-      <div class="col-sm-12 col-md-4 offset-md-4">
+        <div class="col-sm-12 col-md-4 offset-md-4">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4"><?=$title;?></h1>
-                  </div>
-                  <form id="karyawan">
-                    <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="nik" name="nik" placeholder="Nomor Induk Karyawan" required autofocus>
+          <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+              <!-- Nested Row within Card Body -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="p-5">
+                    <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4"><?=$title;?></h1>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </button>
-                    <a href="<?=site_url('beranda');?>" class="btn btn-secondary btn-user btn-block">
-                      Kembali Ke Beranda
-                    </a>
-                  </form>
+                    <form id="karyawan">
+                      <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="nik" name="nik" placeholder="Nomor Induk Karyawan" required autofocus>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Login
+                      </button>
+                      <a href="<?=site_url('beranda');?>" class="btn btn-secondary btn-user btn-block">
+                        Kembali Ke Beranda
+                      </a>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
+      <?php } ?>
+    </div>
 
-      </div>
-    <?php } ?>
-  </div>
-  <div class="row">
+    <div class="row">
 
-    <?php
-    if($tipe == "admin"){
-    ?>
-    <div class="col-sm-12 col-md-4 offset-md-4">
+      <?php
+      if($tipe == "admin"){
+      ?>
+        <div class="col-sm-12 col-md-4 offset-md-4">
 
-      <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0">
-          <!-- Nested Row within Card Body -->
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="p-4">
-                <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4"><?=$title;?></h1>
+          <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+              <!-- Nested Row within Card Body -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="p-4">
+                    <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4"><?=$title;?></h1>
+                    </div>
+                    <form id="adminform">
+                      <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukan Username" required autofocus>
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control form-control-user" id="keypass" name="keypass" placeholder="Masukan Password" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Login as Admin
+                      </button>
+                      <a href="<?=site_url('beranda');?>" class="btn btn-secondary btn-user btn-block">
+                        Kembali Ke Beranda
+                      </a>
+                    </form>
+                  </div>
                 </div>
-                <form id="adminform">
-                  <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukan Username" required autofocus>
-                  </div>
-                  <div class="form-group">
-                    <input type="password" class="form-control form-control-user" id="keypass" name="keypass" placeholder="Masukan Password" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-user btn-block">
-                    Login as Admin
-                  </button>
-                  <a href="<?=site_url('beranda');?>" class="btn btn-secondary btn-user btn-block">
-                    Kembali Ke Beranda
-                  </a>
-                </form>
               </div>
             </div>
           </div>
+
         </div>
-      </div>
+      <?php } ?>
 
     </div>
-    <?php } ?>
-
-  </div>
 
   </div>
 

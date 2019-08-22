@@ -19,6 +19,7 @@
     <link href="<?=base_url('assets/');?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?=base_url();?>vendor/toast/jquery.toast.min.css" rel="stylesheet" type="text/css">
     <link href="<?=base_url();?>vendor/summernote/summernote-bs4.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="<?=site_url('logo_sm.png');?>">
 
 </head>
 

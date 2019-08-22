@@ -16,10 +16,12 @@ class Login extends CI_Controller {
 
   public function index($tipe)
   {
-    if($tipe == "karyawan"){
-      $data['title'] = 'KSPPS Baytul Ikhtiar - Login Karyawan';
+    if($tipe == "anggota"){
+      $data['title'] = 'KSPPS Baytul Ikhtiar<br>Login Anggota';
+    }elseif($tipe == "karyawan"){
+      $data['title'] = 'KSPPS Baytul Ikhtiar<br>Login Karyawan';
     }elseif($tipe == "admin"){
-      $data['title'] = 'KSPPS Baytul Ikhtiar - Login Admin';
+      $data['title'] = 'KSPPS Baytul Ikhtiar<br>Login Admin';
     }
     $data['tipe'] = $tipe;
     $this->_template($data);
