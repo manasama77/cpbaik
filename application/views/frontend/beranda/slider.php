@@ -1,4 +1,4 @@
-<section id="main-slider" >
+<!--section id="main-slider" >
   <div class="single-item">
     <div>
       <img src="<?=base_url('assets/images/slider/slider1.jpeg');?>" class="img-responsive" />
@@ -10,4 +10,6 @@
       <img src="<?=base_url('assets/images/slider/slider3.jpeg');?>" class="img-responsive" />
     </div>
   </div>
-</section>
+</section-->
+<div id="main-slider">
+</div>

@@ -15,9 +15,10 @@
     <link rel="icon" href="<?=site_url('logo_sm.png');?>">
     <link href="<?=base_url('assets/');?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
 
     <!-- Custom styles for this template-->
-    <link href="<?=base_url('assets/');?>css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?=base_url('assets/');?>css/sb-admin-2.css" rel="stylesheet">
     <link href="<?=base_url();?>vendor/toast/jquery.toast.min.css" rel="stylesheet" type="text/css">
     <link href="<?=base_url();?>vendor/summernote/summernote-bs4.css" rel="stylesheet" type="text/css">
 
@@ -85,6 +86,7 @@
     <script src="<?=base_url();?>vendor/validate/additional-methods.min.js"></script>
     <script src="<?=base_url();?>vendor/summernote/summernote-bs4.min.js"></script>
     <script src="<?=base_url();?>vendor/summernote/lang/summernote-id-ID.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
 
 
 </body>

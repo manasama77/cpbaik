@@ -1,15 +1,15 @@
 <header>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="top:0px !important;">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="top:0px !important; min-height:40px !important;">
     <div class="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse" style="margin-top:5px !important;margin-bottom:5px !important;">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="navbar-brand" style="margin-top:0px;">
+          <!--div class="navbar-brand" style="margin-top:0px;">
             <a href="<?=site_url('/');?>">
               <h1 style="color:#FF6347; margin-top:-20px !important; padding-top: 3px !important; ">
                 <img src="<?=base_url('assets/img/logo_sm.png');?>" style="width:50px;" alt="LOGO BAIK SMALL">
@@ -17,7 +17,7 @@
                 </span>IKHTIAR
               </h1>
             </a>
-          </div>
+          </div-->
         </div>
 
         <div class="navbar-collapse collapse">

@@ -11,15 +11,15 @@
             <table class="table borderless">
               <thead>
                 <tr>
-                  <th>Alamat</th>
-                  <th>Telepon</th>
-                  <th>Email</th>
+                  <th style="width:25%;">Alamat</th>
+                  <th style="width:25%;">Telepon</th>
+                  <th style="width:25%;">Email</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Ini Alamatnya</td>
-                  <td>+62 8123 456 789</td>
+                  <td>Jl. Raya Sindang Barang No. 408 Rt. 001 Rw. 009 Kel. Sindang Barang Kec. Bogor Barat Kota Bogor</td>
+                  <td>0251 8311342</td>
                   <td>email@email.com</td>
                 </tr>
               </tbody>

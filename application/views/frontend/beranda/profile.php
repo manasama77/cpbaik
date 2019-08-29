@@ -2,7 +2,7 @@
   <div class="container">
     <div class="col-md-12">
       <div class="text-center">
-        <h2>Mengenal Lebih Dekat Dengan BAIK</h2>
+        <h2>MENGENAL LEBIH DEKAT KSPPS BAIK</h2>
       </div>
       <?php
       if($arr_profile->num_rows() == '0'){

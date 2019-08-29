@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="<?=base_url('assets/');?>css/animate.css">
   <link href="<?=base_url('assets/');?>css/prettyPhoto.css" rel="stylesheet">
   <link href="<?=base_url('assets/');?>css/style.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="<?=site_url('');?>assets/css/slick.css"/>
+  <!--link rel="stylesheet" type="text/css" href="<?=site_url('');?>assets/css/slick.css"/-->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <!-- =======================================================
     Theme Name: Company
     Theme URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
@@ -28,11 +29,15 @@
 
       .nav-tabs > li > a {
         padding-top:15px !important;
-        padding-bottom:0px !important;
+        padding-bottom:4px !important;
       }
 
       @media (max-width: 767px) {
         .navbar-brand { padding-top: 15px !important;
+      }
+
+      #main-slider .carousel .item {
+        height:auto !important;
       }
     </style>
   </head>
@@ -54,11 +59,16 @@
     <script src="<?=base_url('assets/');?>js/functions.js"></script>
     <script src="<?=base_url('assets/');?>js/jquery.number.min.js"></script>
     <script src="<?=base_url();?>vendor/blockui/jquery.blockUI.js"></script>
-    <script type="text/javascript" src="<?=site_url();?>assets/js/slick.min.js"></script>
+    <!--script type="text/javascript" src="<?=site_url();?>assets/js/slick.min.js"></script-->
     <script>
       $(document).ready(function(){
 
-        $('.single-item').slick({
+        $("#myCarousel").carousel({
+          interval: 6000,
+          pause: "hover"
+        });
+
+        /*$('.single-item').slick({
           adaptiveHeight: true,
           infinite:true,
           autoplay: true,
@@ -69,9 +79,9 @@
           fade: true,
           cssEase: 'linear',
           arrows: false,
-        });
+        });*/
 
-        $.ajax({
+        /*$.ajax({
           url         : '<?=site_url('beranda/sirkah');?>',
           method      : 'GET',
           dataType    : 'JSON',
@@ -111,7 +121,7 @@
           $('#jumlah_anggota_block').unblock();
           $('#outstanding_block').unblock();
           $('#par_block').unblock();
-        });
+        });*/
 
       });
 

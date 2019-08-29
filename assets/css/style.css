@@ -257,7 +257,7 @@ a:hover {
   position: absolute;
   width: 100%;
   display: block !important;
-  height: 730px;
+  height: 527px;
   -webkit-transition: opacity ease-in-out 500ms;
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;
@@ -275,7 +275,7 @@ a:hover {
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;
   transition: opacity ease-in-out 500ms;
-  z-index: 1;
+  z-index: 0;
 }
 
 #main-slider .active .animation.animated-item-1 {
@@ -360,7 +360,7 @@ a:hover {
 }
 
 #partner {
-  background: url(../images/partners/partner_bg.png) 50% 50% no-repeat;
+  background: url(../images/partners/partner_bg2.jpg) 50% 50% no-repeat;
   background-size: cover;
 }
 
