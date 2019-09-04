@@ -53,7 +53,7 @@
 
                 <div class="col-xs-12 col-sm-10 blog-content">
                   <h4><?=$key->judul;?></h4>
-                  <iframe width="560" height="315" src="<?=$key->video;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe id="player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/<?=$key->video;?>?enablejsapi=1&origin=http://example.com" frameborder="3" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
                 </div>
               </div>
             </div>

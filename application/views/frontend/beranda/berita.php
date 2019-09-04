@@ -53,7 +53,7 @@
           <h3><?=$key->judul;?></h3>
           <!-- 16:9 aspect ratio -->
           <div class="embed-responsive embed-responsive-16by9">
-            <iframe width="560" height="315" src="<?=$key->video;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/<?=$key->video;?>?enablejsapi=1&origin=http://example.com" frameborder="3" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
           </div>
           <br>
         </div>
@@ -63,7 +63,7 @@
       ?>
 
       <div class="col-md-12 wow fadeInUp text-center" data-wow-duration="1000ms" data-wow-delay="1700ms">
-        <a href="<?=site_url('berita');?>">Lihat Semua Kisah</a>
+        <a href="<?=site_url('berita');?>" class="btn btn-info">Lihat Semua Kisah</a>
       </div>
 
     </div>

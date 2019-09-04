@@ -27,7 +27,7 @@ class Kisah extends CI_Controller {
     $table = 'kisah';
 
     $where = ['status' => '1'];
-    if(!empty($this->input->post('keyword'))){
+    if($this->input->post('keyword') != NULL){
       $where = [
         'status' => '1',
         'judul ILIKE' => "%".$this->input->post('keyword')."%"

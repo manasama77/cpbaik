@@ -11,8 +11,8 @@ class Berita extends CI_Controller {
 
   private function _template($data)
   {
-    if(empty($this->session->userdata('nik'))){
-      redirect('login/karyawan','refresh');
+    if($this->session->userdata('nik') == NULL){
+      redirect('login/karyawan');
     }else{
       $this->load->view('backend/template', $data);
     }
@@ -147,6 +147,77 @@ class Berita extends CI_Controller {
         'code' => 404,
         'id' => $id,
         'judul' => $judul,
+      ];
+    }
+
+    echo json_encode($return);
+  }
+
+  public function upload()
+  {
+    if(isset($_FILES["file"]["name"]))  
+    {
+      $config['upload_path']   = 'assets/img/berita';
+      $config['allowed_types'] = 'gif|jpg|png|jpeg';
+      $config['overwrite']     = TRUE;
+      $config['max_size']      = 100024;
+      $config['encrypt_name']  = TRUE;
+      $this->load->library('upload', $config);  
+
+      if(!$this->upload->do_upload('file'))  
+      {  
+        $this->upload->display_errors();  
+        return FALSE;
+      }else{  
+        $data = $this->upload->data();                 
+        echo base_url().'asset/img/berita'.$this->upload->data("file_name");
+      }  
+    } 
+  }
+
+  public function edit($id)
+  {
+    $table     = 'berita';
+    $limit     = NULL;
+    $offset    = NULL;
+    $where     = ['id' => $id];
+    $order     = NULL;
+    $order_ori = 'ASC';
+    $data['arr_berita'] = $this->mdb->get($table, $limit, $offset, $where, $order, $order_ori);
+    $data['title']   = 'KSPPS Baytul Ikhtiar - Edit Berita Baik';
+    $data['content'] = 'berita/form_edit';
+    $data['js']      = 'berita/berita_vitamin_form_edit';
+    $this->_template($data);
+  }
+
+  public function update()
+  {
+    $id    = $this->input->post('id');
+    $judul = $this->input->post('judul');
+    $isi   = nl2br($this->input->post('isi'));
+    $nik   = $this->session->userdata('nik');
+    $nama  = $this->session->userdata('nama');
+
+    $table = 'berita';
+    $data = [
+      'judul'        => $judul,
+      'isi'          => $isi,
+      'kategori'     => 'Berita',
+      'created_nik'  => $nik,
+      'created_name' => $nama,
+      'created_date' => date('Y-m-d H:i:s'),
+      'status'       => 0,
+    ];
+    $exec = $this->mdb->update_berita($table, $data, $id);
+    if($exec === TRUE){
+      $return = [
+        'code'  => 200,
+        'flash' => 'Edit Berita Baik Berhasil'
+      ];
+    }else{
+      $return = [
+        'code'  => 500,
+        'flash' => 'Terjadi kesalahan ketika menyimpan kedalam database'
       ];
     }
 

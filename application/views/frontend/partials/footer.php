@@ -14,7 +14,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="copyright">
                     <div class="credits">
-                        &copy; 2019 <a href="https://baytulikhtiar.com/">KSPPS Baytul Ikhtiar</a>
+                        <a href="<?=site_url('login/admin');?>">&copy;</a> 2019 <a href="https://baytulikhtiar.com/">KSPPS Baytul Ikhtiar</a>
                     </div>
                     <!--div class="credits">
                         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>

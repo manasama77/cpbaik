@@ -37,7 +37,7 @@ foreach ($arr->result() as $key) {
             <div class="form-group">
               <label for="gambar">Gambar</label>
               <br>
-              <img src="<?=base_url('assets/img/berita/'.$key->gambar);?>" class="img-thumbnail img-responsive" width="200px">
+              <img src="<?=base_url('assets/img/berita/'.$key->gambar);?>" class="img-thumbnail img-responsive mb-3" width="200px">
               <input type="file" class="form-control" id="gambar" name="gambar">
             </div>
             <div class="form-group">

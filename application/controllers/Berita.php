@@ -27,7 +27,7 @@ class Berita extends CI_Controller {
     $table = 'berita';
 
     $where = ['status' => '1', 'kategori' => 'Berita'];
-    if(!empty($this->input->post('keyword'))){
+    if($this->input->post('keyword') != NULL){
       $where = [
         'status' => '1',
         'kategori' => 'Berita',

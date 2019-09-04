@@ -1,6 +1,10 @@
 <script>
   $(document).ready(function(){
-    
+    $('.lihat').on('click', function(){
+      $('#lihatModal').modal('show');
+      var id = $(this).data('id');
+      showLihat(id);
+    });
   });
 
   function hapus(id, judul)
@@ -173,5 +177,48 @@
       loader: true,
       loaderBg: '#9EC600',    
     });
+  }
+
+  function showLihat(id)
+  {
+    $.ajax({
+      url         : '<?=site_url('admin/berita/lihat');?>',
+      method      : 'GET',
+      data        : 
+      { 
+        id:id
+      },
+      beforeSend  : function(){
+        $.blockUI({ message: '<i class="fa fa-spinner fa-spin"></i> Silahkan Tunggu...' });
+      },
+      statusCode  : {
+        404: function() {
+          $.unblockUI();
+          generateToast('Warning', 'Page Not Found.', 'error');
+        },
+        500: function() {
+          $.unblockUI();
+          generateToast('Warning', 'Not connect with databasae.', 'error');
+        }
+      }
+    })
+    .done(function(result){
+      console.log(result);
+      var result = $.parseJSON(result);
+
+      if(result.code == 400){
+        generateToast('Something Wrong', result.description, 'info');
+        $.unblockUI();
+      }else if(result.code == 200){
+        console.log(result.description);
+        $('#vlihat').html(result.data);
+        $.unblockUI();
+      }else if(result.code == 500){
+        generateToast('Warning', result.description, 'warning');
+        $.unblockUI();
+      }
+
+      $.unblockUI();
+    }); 
   }
 </script>

@@ -39,10 +39,10 @@ class Hubungi extends CI_Controller {
 
       if($exec){
         $this->session->set_flashdata('status', 'ok');
-        redirect('/hubungi','refresh');
+        redirect('/hubungi');
       }else{
         $this->session->set_flashdata('status', 'no');
-        redirect('/hubungi','refresh');
+        redirect('/hubungi');
       }
     }
 

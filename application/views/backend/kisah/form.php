@@ -26,10 +26,13 @@
               <input type="text" class="form-control" id="judul" name="judul" required autofocus>
             </div>
             <div class="form-group">
-              <label for="isi">Link Video</label>
+              <label for="isi"><i class="fab fa-youtube"></i> Link Youtube Video</label>
               <input type="text" class="form-control" id="video" name="video" required>
             </div>
             <div class="form-group">
+              <div class="alert alert-info" role="alert">
+                <h4>Cara mengambil link video Youtube <i class="fas fa-question"></i></h4><hr>Untuk menyisipkan video Youtube cukup dengan <b>Copy</b> text pada Address Bar, seperti gambar berikut<br><img src="<?=base_url();?>assets/img/how youtube.png" class="img-responsive img-thumbnail"><br>Lalu <b>Paste</b> pada form diatas.
+              </div>
               <button type="submit" class="btn btn-primary btn-block">Buat Kisah Baik</button>
             </div>
           </form>

@@ -40,7 +40,7 @@ class M_core extends CI_Model {
   public function update_tentang($table, $data)
   {
     $this->db->trans_start();
-    if(empty($_FILES['gambar']['name'])){
+    if($_FILES['gambar']['name'] == NULL){
       $image = $this->input->post('prev_gambar');
     }else{
       $image = $this->_uploadImageTentang();
@@ -65,7 +65,7 @@ class M_core extends CI_Model {
   public function update_berita($table, $data, $id)
   {
     $this->db->trans_start();
-    if(empty($_FILES['gambar']['name'])){
+    if($_FILES['gambar']['name'] == NULL){
       $image = $this->input->post('prev_gambar');
     }else{
       $image = $this->_uploadImage();

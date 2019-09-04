@@ -47,7 +47,7 @@
           <?php
           foreach ($arr_berita->result() as $key): 
             $thumbnail = base_url('assets/img/default-image.jpg');
-            if(!empty($key->gambar)){
+            if($key->gambar != NULL){
               $thumbnail = base_url('assets/img/berita/'.$key->gambar);
             }
           ?>

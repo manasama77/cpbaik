@@ -10,11 +10,11 @@ class Dashboard extends CI_Controller {
   }
 
   private function _template($data)
-  {
-    if(empty($this->session->userdata('nik'))){
-      redirect('login/karyawan','refresh');
-    }else{
+  {    
+    if($this->session->userdata('nik') != NULL){
       $this->load->view('backend/template', $data);
+    }else{
+      redirect('login/karyawan');
     }
   }
 

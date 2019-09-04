@@ -4,6 +4,7 @@
     $('#isi').summernote({
       placeholder: 'Isi Berita...',
       tabsize: 2,
+      height: 200,
       lang: 'id-ID',
       toolbar: [
         ['insert', ['picture','link','table','hr',]],
@@ -19,9 +20,9 @@
       }
     });
     // SUMERNOTE
-    
+
     // FORM VALIDATE
-    $('#formedit').validate({
+    $('#form').validate({
       debug: true,
       errorClass: 'help-inline text-danger',
       rules:{
@@ -31,13 +32,13 @@
       },
       submitHandler: function( form ) {
         $.ajax({
-          url         : '<?=site_url('admin/berita/update');?>',
+          url         : '<?=site_url('backend/berita/update');?>',
           method      : 'POST',
           data        : new FormData(form),
-          processData  : false,
-          contentType  : false,
-          cache        : false,
-          async        : false,
+          processData : false,
+          contentType : false,
+          cache       : false,
+          async       : false,
           beforeSend  : function(){
             $.blockUI({ message: '<i class="fas fa-spinner fa-spin"></i> Silahkan Tunggu...' });
           },
@@ -67,7 +68,7 @@
           {
             sweet('success', 'Sukses', result.flash);
             setTimeout(function(){
-              window.location.replace('<?=site_url('admin/berita/index');?>');
+              window.location.replace('<?=site_url('backend/berita/index');?>');
               $.unblockUI();
             }, 2000);
           }else{

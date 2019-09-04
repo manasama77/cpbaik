@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mt-3">
 
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800">
@@ -44,9 +44,20 @@
                   <td><?=$key->created_date;?></td>
                   <td class="text-center"><?=$status;?></td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-danger btn-sm" onClick="hapus('<?=$key->id;?>', '<?=$key->judul;?>');">
-                      <i class="fas fa-trash"></i> Hapus
-                    </button>
+                    <div class="btn-group">
+                      <?php
+                      if($key->status == '0'){
+                      ?>
+                        <a href="<?=site_url();?>backend/berita/edit/<?=$key->id;?>" class="btn btn-info btn-sm">
+                          <i class="fas fa-pencil-alt"></i> Edit
+                        </a>
+                        <button type="button" class="btn btn-danger btn-sm" onClick="hapus('<?=$key->id;?>', '<?=$key->judul;?>');">
+                          <i class="fas fa-trash"></i> Hapus
+                        </button>
+                      <?php
+                      }
+                      ?>
+                    </div>
                   </td>
                 </tr>
               <?php 

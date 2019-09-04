@@ -11,8 +11,8 @@ class Dashboard extends CI_Controller {
 
   private function _template($data)
   {
-    if(empty($this->session->userdata('username'))){
-      redirect('login/admin','refresh');
+    if($this->session->userdata('username') == NULL){
+      redirect('login/admin');
     }else{
       $this->load->view('admin/template', $data);
     }

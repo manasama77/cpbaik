@@ -58,14 +58,14 @@ class Login extends CI_Controller {
 
       if($exec)
       {
-        redirect('backend/dashboard','refresh');
+        redirect('backend/dashboard');
       }else{
         $this->session->unset_userdata([
           'nik'  => '',
           'nama' => '',
         ]);
         $this->session->set_userdata('status', 500);
-        redirect('login/karyawan','refresh');
+        redirect('login/karyawan');
       }
 
     }
@@ -103,7 +103,7 @@ class Login extends CI_Controller {
   public function logout()
   {
     $this->session->sess_destroy();
-    redirect(site_url('beranda'),'refresh');
+    redirect(site_url('beranda'));
   }
 
 }

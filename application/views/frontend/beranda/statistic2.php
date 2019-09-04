@@ -8,6 +8,12 @@
           $get_count_anggota  = $sirkah['get_count_anggota'][0]->count;
           $get_outstanding    = $sirkah['get_outstanding'][0]->sum / 1000000;
           $get_angsuran_tepat = ($sirkah['get_count_par_lancar'][0]->count / $sirkah['get_count_par_all'][0]->count) * 100;
+
+          /*
+          $get_count_anggota = '0';
+          $get_outstanding = '0';
+          $get_angsuran_tepat = '0';
+          */
           ?>
           <h1 id="jumlah_anggota" class="text-success" style="font-size:31px !important; margin-top:10px; margin-bottom:0px;"><?=number_format($get_count_anggota,0);?></h1>
           <h3 style="font-size:21px !important; margin-top:2px; margin-bottom:0px;">Jumlah Anggota</h3>

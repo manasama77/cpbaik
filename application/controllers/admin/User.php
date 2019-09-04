@@ -11,8 +11,8 @@ class User extends CI_Controller {
 
   private function _template($data)
   {
-    if(empty($this->session->userdata('username'))){
-      redirect('login/admin','refresh');
+    if($this->session->userdata('username') == NULL){
+      redirect('login/admin');
     }else{
       $this->load->view('admin/template', $data);
     }
@@ -182,10 +182,10 @@ class User extends CI_Controller {
     $exec = $this->mdb->update('admin', ['id' => $id], ['password' => $pass]);
     if($exec){
       $this->session->set_flashdata('status', 'Reset Password Berhasil');
-      redirect('admin/user/index','refresh');
+      redirect('admin/user/index');
     }else{
       $this->session->set_flashdata('status', 'Reset Password Gagal Silahkan Coba Kembali');
-      redirect('admin/user/index','refresh');
+      redirect('admin/user/index');
     }
 
   }
